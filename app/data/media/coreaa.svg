@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Red Circle -->
+  <circle cx="30" cy="50" r="20" fill="red"/>
+  
+  <!-- Blue Circle -->
+  <circle cx="70" cy="30" r="20" fill="blue"/>
+  
+  <!-- Green Circle -->
+  <circle cx="70" cy="70" r="20" fill="green"/>
+  
+  <!-- Arrow from Red to Blue -->
+  <line x1="50" y1="50" x2="60" y2="30" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow from Red to Green -->
+  <line x1="50" y1="50" x2="60" y2="70" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrowhead Definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto" fill="black">
+      <path d="M0,0 L10,3.5 L0,7"/>
+    </marker>
+  </defs>
+</svg>

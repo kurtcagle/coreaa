@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sem:triples xmlns:sem="http://marklogic.com/semantics">
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#</sem:subject>
+    <sem:predicate>http://www.w3.org/2000/01/rdf-schema#label</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">DataFieldType</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#targetClass</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://marklogic.com/semantics/blank/6410164076894936836</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#prefix</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">DataFieldType</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://marklogic.com/semantics/blank/6410164076894936836</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#namespace</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">http://ns.coreaa.ai/DataFieldType#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#declare</sem:predicate>
+    <sem:object>http://marklogic.com/semantics/blank/6410164076894936836</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#</sem:subject>
+    <sem:predicate>http://www.w3.org/2000/01/rdf-schema#subClassOf</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Category#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#ignoreProperties</sem:predicate>
+    <sem:object>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#ignoreProperties</sem:predicate>
+    <sem:object>http://www.w3.org/2000/01/rdf-schema#label</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#ignoreProperties</sem:predicate>
+    <sem:object>http://www.w3.org/2000/01/rdf-schema#comment</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#dataValue</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://www.w3.org/ns/shacl#PropertyShape</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#dataValue</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">dataValue</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#dataValue</sem:subject>
+    <sem:predicate>http://www.w3.org/2000/01/rdf-schema#label</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Data Value</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#dataValue</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#path</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataField#dataValue</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#dataValue</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#datatype</sem:predicate>
+    <sem:object>http://www.w3.org/2001/XMLSchema#string</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#dataValue</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#nodeKind</sem:predicate>
+    <sem:object>http://www.w3.org/ns/shacl#Literal</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#dataValue</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#minOccurs</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#integer">0</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#property</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://www.w3.org/ns/shacl#PropertyShape</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#property</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">property</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#property</sem:subject>
+    <sem:predicate>http://www.w3.org/2000/01/rdf-schema#label</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Property</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#property</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#path</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataField#property</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#property</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#class</sem:predicate>
+    <sem:object>http://www.w3.org/ns/shacl#PropertyShape</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#property</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#nodeKind</sem:predicate>
+    <sem:object>http://www.w3.org/ns/shacl#IRI</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#property</sem:subject>
+    <sem:predicate>http://www.w3.org/ns/shacl#minOccurs</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#integer">0</sem:object>
+  </sem:triple>
+</sem:triples>

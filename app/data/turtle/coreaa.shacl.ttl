@@ -1,0 +1,941 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix text: <http://jena.apache.org/text#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix Entity: <http://ns.coreaa.ai/Entity#> .
+@prefix Category: <http://ns.coreaa.ai/Category#> .
+@prefix Platform: <http://ns.coreaa.ai/Platform#> .
+@prefix PlatformType: <http://ns.coreaa.ai/PlatformType#> .
+@prefix Org: <http://ns.coreaa.ai/Org#> .
+@prefix Company: <http://ns.coreaa.ai/Company#> .
+@prefix CompanyType: <http://ns.coreaa.ai/CompanyType#> .
+@prefix Vendor: <http://ns.coreaa.ai/Vendor#> .
+@prefix VendorType: <http://ns.coreaa.ai/VendorType#> .
+@prefix Person: <http://ns.coreaa.ai/Person#> .
+@prefix Role: <http://ns.coreaa.ai/Role#> .
+@prefix Address: <http://ns.coreaa.ai/Address#> .
+@prefix AddressType: <http://ns.coreaa.ai/AddressType#> .
+@prefix Department: <http://ns.coreaa.ai/Department#> .
+@prefix DepartmentType: <http://ns.coreaa.ai/DepartmentType#> .
+@prefix Division: <http://ns.coreaa.ai/Division#> .
+@prefix DivisionType: <http://ns.coreaa.ai/DivisionType#> .
+@prefix Application: <http://ns.coreaa.ai/Application#> .
+@prefix ApplicationType: <http://ns.coreaa.ai/ApplicationType#> .
+@prefix Module: <http://ns.coreaa.ai/Module#> .
+@prefix ModuleType: <http://ns.coreaa.ai/ModuleType#> .
+@prefix Component: <http://ns.coreaa.ai/Component#> .
+@prefix ComponentType: <http://ns.coreaa.ai/ComponentType#> .
+@prefix WorkFlow: <http://ns.coreaa.ai/WorkFlow#> .
+@prefix WorkFlowType: <http://ns.coreaa.ai/WorkFlowType#> .
+@prefix DataSet: <http://ns.coreaa.ai/DataSet#> .
+@prefix DataSetType: <http://ns.coreaa.ai/DataSetType#> .
+@prefix DataField: <http://ns.coreaa.ai/DataField#> .
+@prefix DataFieldType: <http://ns.coreaa.ai/DataFieldType#> .
+@prefix PropertyGroup: <http://ns.coreaa.ai/PropertyGroup#> .
+#@prefix Coraa: <http://ns.coreaa.ai/> .
+
+PropertyGroup:Header a sh:PropertyGroup ;
+    sh:name "Header"^^xsd:string ;
+    rdfs:label "Header"^^xsd:string ;
+    sh:order 0 ;
+    .
+
+PropertyGroup:Body a sh:PropertyGroup ;
+    sh:name "Body"^^xsd:string ;
+    rdfs:label "Body"^^xsd:string ;
+    sh:order 100 ;
+    .
+
+Entity: a sh:NodeShape ;
+    sh:name "Entity"^^xsd:string ;
+    rdfs:label "Entity"^^xsd:string ;
+    sh:targetClass Entity: ;
+    sh:declare [
+        sh:prefix "Entity" ;
+        sh:namespace "http://ns.coreaa.ai/Entity#"^^xsd:string
+    ];
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    sh:property Entity:name, Entity:description, Entity:type, Entity:child ;
+    .
+
+Entity:name a sh:PropertyShape ;
+    sh:name "name"^^xsd:string ;
+    rdfs:label "Name"^^xsd:string ;
+    sh:path Entity:name ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    rdfs:subPropertyOf rdfs:label ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Header ;    
+    sh:order 0 ;
+    .
+
+Entity:description a sh:PropertyShape ;
+    sh:name "description"^^xsd:string ;
+    rdfs:label "Description"^^xsd:string ;
+    rdfs:subPropertyOf rdfs:comment ;
+    sh:path Entity:description ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 0 ;
+    sh:group PropertyGroup:Header ;    
+    sh:order 1 ;
+    .
+
+Entity:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path Entity:type ;
+    sh:class Category: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    sh:group PropertyGroup:Header ;    
+    sh:order 2 ;
+    .
+
+
+Entity:startDate a sh:PropertyShape ;
+    sh:name "startDate"^^xsd:string ;
+    rdfs:label "Start Date"^^xsd:string ;
+    sh:path Entity:startDate ;
+    sh:datetype xsd:date ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:default "1900-01-01"^^xsd:date ;
+    sh:group PropertyGroup:Header ;    
+    sh:order 3 ;
+    .
+
+Entity:endDate a sh:PropertyShape ;
+    sh:name "endDate"^^xsd:string ;
+    rdfs:label "End Date"^^xsd:string ;
+    sh:path Entity:endDate ;
+    sh:datetype xsd:date ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 0 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Header ;    
+    sh:order 4 ;
+    .
+
+Entity:child a sh:PropertyShape ;
+    sh:name "child"^^xsd:string ;
+    rdfs:label "Child"^^xsd:string ;
+    sh:path Entity:child ;
+    sh:class Entity: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    sh:group PropertyGroup:Header ;    
+    sh:order 5 ;
+    .
+
+
+Category: a sh:NodeShape ;
+    sh:name "Category"^^xsd:string ;
+    rdfs:label "Category"^^xsd:string ;
+    rdfs:subClassOf Entity: ;
+    sh:targetClass Category: ;
+    sh:declare [
+        sh:prefix "Category" ;
+        sh:namespace "http://ns.coreaa.ai/Category#"^^xsd:string
+    ];
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    sh:property Category:name, Category:description, Category:child ;
+    .
+
+
+Category:name a sh:PropertyShape ;
+    sh:name "name"^^xsd:string ;
+    rdfs:label "Name"^^xsd:string ;
+    sh:path Category:name ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    rdfs:subPropertyOf rdfs:label ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    .
+
+Category:description a sh:PropertyShape ;
+    sh:name "description"^^xsd:string ;
+    rdfs:label "Description"^^xsd:string ;
+    sh:path Category:description ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    rdfs:subPropertyOf rdfs:label ;
+    sh:minOccurs 0 ;
+    .
+
+Category:child a sh:PropertyShape ;
+    sh:name "child"^^xsd:string ;
+    rdfs:label "Child"^^xsd:string ;
+    sh:path Category:child ;
+    sh:class Category: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+
+Platform: a sh:NodeShape ;
+    sh:name "Platform" ^^xsd:string ;
+    rdfs:label "Platform"^^xsd:string ;
+    sh:targetClass Platform: ;
+    sh:declare [
+        sh:prefix "Platform" ;
+        sh:namespace "http://ns.coreaa.ai/Platform#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property Platform:vendor,Platform:type, Platform:application;
+    .
+
+Platform:vendor a sh:PropertyShape ;
+    sh:name "vendor"^^xsd:string ;
+    rdfs:label "Vendor"^^xsd:string ;
+    sh:path Platform:vendor ;
+    sh:class Vendor: ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    rdfs:subPropertyOf Entity:child ;
+    sh:nodeKind sh:IRI ;
+    sh:group PropertyGroup:Platform ;
+    sh:order 2;
+
+    .
+
+Platform:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path Platform:type ;
+    sh:class PlatformType: ;
+    rdfs:subPropertyOf Entity:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    sh:group PropertyGroup:Platform ;
+    sh:order 1;
+    .
+
+Platform:application a sh:PropertyShape ;
+    sh:name "application"^^xsd:string ;
+    rdfs:label "Application"^^xsd:string ;
+    sh:path Platform:application ;
+    sh:class Application: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    sh:group PropertyGroup:Platform ;
+    sh:order 3;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+PropertyGroup:Platform a sh:PropertyGroup ;
+    sh:name "Platform"^^xsd:string ;
+    rdfs:label "Platform"^^xsd:string ;
+    sh:order 100 ;
+    .
+
+
+PlatformType: a sh:NodeShape ;
+    sh:name "PlatformType"^^xsd:string ;
+    rdfs:label "Platform Type"^^xsd:string ;
+    sh:targetClass PlatformType: ;
+    sh:declare [
+        sh:prefix "PlatformType" ;
+        sh:namespace "http://ns.coreaa.ai/PlatformType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    sh:property PlatformType:name ;
+    .
+
+Org: a sh:NodeShape ;
+    sh:name "Org"^^xsd:string ;
+    rdfs:label "Org"^^xsd:string ;
+    sh:targetClass Org: ;
+    sh:declare [
+        sh:prefix "Org" ;
+        sh:namespace "http://ns.coreaa.ai/Org#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property Org:vendor,Org:type, Org:application, Org:executive ,Org:address,Org:headCount;
+    .
+
+Org:executive a sh:PropertyShape ;
+    sh:name "executive"^^xsd:string ;
+    rdfs:label "Executive"^^xsd:string ;
+    sh:path Org:executive ;
+    sh:class Person: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Body ;
+    sh:order 1 ;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+Org:address a sh:PropertyShape ;
+    sh:name "address"^^xsd:string ;
+    rdfs:label "Address"^^xsd:string ;
+    sh:path Org:address ;
+    sh:class Address: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Body ;
+    sh:order 3 ;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+Org:headCount a sh:PropertyShape ;
+    sh:name "headCount"^^xsd:string ;
+    rdfs:label "Head Count"^^xsd:string ;
+    sh:path Org:headCount ;
+    sh:datatype xsd:integer ;
+    sh:nodeKind sh:Literal ;
+    sh:minInclusive 0 ;
+    sh:maxInclusive 1000000 ;
+    sh:group PropertyGroup:Body ;
+    sh:order 2 ;
+    rdfs:subPropertyOf Entity:child ;
+    .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+
+Company: a sh:NodeShape ;
+    sh:name "Company"^^xsd:string ;
+    rdfs:label "Company"^^xsd:string ;
+    sh:targetClass Company: ;
+    sh:declare [
+        sh:prefix "Company" ;
+        sh:namespace "http://ns.coreaa.ai/Company#"^^xsd:string
+    ];
+    rdfs:subClassOf Org: ;
+    sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property Org:vendor,Org:type, Org:application, Org:executive, Org:address,Org:headCount;
+    sh:property Company:type,Company:revenue ;
+    .
+
+Company:revenue a sh:PropertyShape ;
+    sh:name "revenue"^^xsd:string ;
+    rdfs:label "Revenue"^^xsd:string ;
+    sh:path Company:revenue ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+CompanyType: a sh:NodeShape ;
+    sh:name "CompanyType"^^xsd:string ;
+    rdfs:label "Company Type"^^xsd:string ;
+    sh:targetClass CompanyType: ;
+    sh:declare [
+        sh:prefix "CompanyType" ;
+        sh:namespace "http://ns.coreaa.ai/CompanyType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    .
+
+Vendor: a sh:NodeShape ;
+    sh:name "Vendor"^^xsd:string ;
+    rdfs:label "Vendor"^^xsd:string ;
+    sh:targetClass Vendor: ;
+    sh:declare [
+        sh:prefix "Vendor" ;
+        sh:namespace "http://ns.coreaa.ai/Vendor#"^^xsd:string
+    ];
+    rdfs:subClassOf Company:;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    sh:property Vendor:type ;
+    .
+
+Vendor:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path Vendor:type ;
+    sh:class VendorType: ;
+    rdfs:subPropertyOf Entity:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+
+VendorType: a sh:NodeShape ;
+    sh:name "VendorType"^^xsd:string ;
+    rdfs:label "Vendor Type"^^xsd:string ;
+    sh:targetClass VendorType: ;
+    sh:declare [
+        sh:prefix "VendorType" ;
+        sh:namespace "http://ns.coreaa.ai/VendorType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    .
+
+Person: a sh:NodeShape ;
+    sh:name "Person"^^xsd:string ;
+    rdfs:label "Person"^^xsd:string ;
+    sh:targetClass Person: ;
+    sh:declare [
+        sh:prefix "Person" ;
+        sh:namespace "http://ns.coreaa.ai/Person#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property Person:firstName,Person:lastName,Person:email,Person:phone,Person:address,Person:department,Person:division,Person:role,Person:manager;
+    .
+
+PropertyGroup:Person a sh:PropertyGroup ;
+    sh:name "Personal Data"^^xsd:string ;
+    rdfs:label "Personal Data"^^xsd:string ;
+    sh:order 1 ;
+    .
+
+Person:firstName a sh:PropertyShape ;
+    sh:name "firstName"^^xsd:string ;
+    rdfs:label "First Name"^^xsd:string ;
+    sh:path Person:firstName ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Person ;
+    sh:order 1 ;
+    .
+
+Person:lastName a sh:PropertyShape ;    
+    sh:name "lastName"^^xsd:string ;
+    rdfs:label "Last Name"^^xsd:string ;
+    sh:path Person:lastName ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Person ;
+    sh:order 2 ;
+    .
+
+Person:email a sh:PropertyShape ;
+    sh:name "email"^^xsd:string ;
+    rdfs:label "Email"^^xsd:string ;
+    sh:path Person:email ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Person ;
+    sh:order 3 ;
+    .
+
+Person:phone a sh:PropertyShape ;
+    sh:name "phone"^^xsd:string ;
+    rdfs:label "Phone"^^xsd:string ;
+    sh:path Person:phone ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Person ;
+    sh:order 4 ;
+    .
+
+Person:address a sh:PropertyShape ;
+    sh:name "address"^^xsd:string ;
+    rdfs:label "Address"^^xsd:string ;
+    sh:path Person:address ;
+    sh:class Address: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Person ;
+    sh:order 5 ;
+    .
+
+Person:department a sh:PropertyShape ;
+    sh:name "department"^^xsd:string ;
+    rdfs:label "Department"^^xsd:string ;
+    sh:path Person:department ;
+    sh:class Department: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    rdfs:subPropertyOf Entity:child ;
+    sh:group PropertyGroup:Person ;
+    sh:order 6 ;
+    .
+
+
+
+Person:division a sh:PropertyShape ;
+    sh:name "division"^^xsd:string ;
+    rdfs:label "Division"^^xsd:string ;
+    sh:path Person:division ;
+    sh:class Division: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    rdfs:subPropertyOf Entity:child ;
+    sh:group PropertyGroup:Person ;
+    sh:order 7 ;
+    .
+
+Person:role a sh:PropertyShape ;
+    sh:name "role"^^xsd:string ;
+    rdfs:label "Role"^^xsd:string ;
+    sh:path Person:role ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    sh:group PropertyGroup:Person ;
+    sh:class Role: ;
+    sh:order 8 ;
+    .
+
+Person:manager a sh:PropertyShape ;
+    sh:name "manager"^^xsd:string ;
+    rdfs:label "Manager"^^xsd:string ;
+    sh:path Person:manager ;
+    sh:class Person: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    rdfs:subPropertyOf Entity:child ;
+    sh:group PropertyGroup:Person ;
+    sh:order 9 ;
+    .
+  
+
+PropertyGroup:Address a sh:PropertyGroup ;
+    sh:name "Address"^^xsd:string ;
+    rdfs:label "Address"^^xsd:string ;
+    sh:order 1 ;
+    .
+
+Role: a sh:NodeShape ;
+    sh:name "Role"^^xsd:string ;
+    rdfs:label "Role"^^xsd:string ;
+    sh:targetClass Role: ;
+    sh:declare [
+        sh:prefix "Role" ;
+        sh:namespace "http://ns.coreaa.ai/Role#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    .
+
+Address: a sh:NodeShape ;
+    sh:name "Address"^^xsd:string ;
+    rdfs:label "Address"^^xsd:string ;
+    sh:targetClass Address: ;
+    sh:declare [
+        sh:prefix "Address" ;
+        sh:namespace "http://ns.coreaa.ai/Address#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property Address:street,Address:city,Address:state,Address:zip,Address:country;
+    .
+
+Address:street a sh:PropertyShape ;
+    sh:name "street"^^xsd:string ;
+    rdfs:label "Street"^^xsd:string ;
+    sh:path Address:street ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Address ;
+    sh:order 1 ;
+    .
+
+Address:city a sh:PropertyShape ;
+    sh:name "city"^^xsd:string ;
+    rdfs:label "City"^^xsd:string ;
+    sh:path Address:city ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Address ;
+    sh:order 2 ;
+    .
+
+Address:state a sh:PropertyShape ;
+    sh:name "state"^^xsd:string ;
+    rdfs:label "State"^^xsd:string ;
+    sh:path Address:state ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Address ;
+    sh:order 3 ;
+    .
+
+Address:zip a sh:PropertyShape ;
+    sh:name "zip"^^xsd:string ;
+    rdfs:label "Zip"^^xsd:string ;
+    sh:path Address:zip ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Address ;
+    sh:order 4 ;
+
+    .
+
+Address:country a sh:PropertyShape ;
+    sh:name "country"^^xsd:string ;
+    rdfs:label "Country"^^xsd:string ;
+    sh:path Address:country ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    sh:group PropertyGroup:Address ;
+    sh:order 5 ;
+    .
+
+Address:type a sh:PropertyShape ;
+    sh:name "addressType"^^xsd:string ;
+    rdfs:label "Address Type"^^xsd:string ;
+    sh:path Address:addressType ;
+    sh:class AddressType: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    sh:group PropertyGroup:Address ;
+    sh:order 6 ;
+    .
+
+
+Department: a sh:NodeShape ;
+    sh:name "Department"^^xsd:string ;
+    rdfs:label "Department"^^xsd:string ;
+    sh:targetClass Department: ;
+    rdfs:subClassOf Org: ;
+    sh:declare [
+        sh:prefix "Department" ;
+        sh:namespace "http://ns.coreaa.ai/Department#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+        sh:ignoreProperties Org:executive,Org:address,Company:revenue,Org:headCount ;
+    sh:property Department:name,Department:type,Department:division;
+    .
+
+Department:name a sh:PropertyShape ;
+    sh:name "name"^^xsd:string ;
+    rdfs:label "Name"^^xsd:string ;
+    sh:path Department:name ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:order 1 ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    .
+
+Department:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path Department:type ;
+    sh:class DepartmentType: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    sh:order 2 ;
+
+    .
+Department:division a sh:PropertyShape ;
+    sh:name "division"^^xsd:string ;
+    rdfs:label "Division"^^xsd:string ;
+    sh:path Department:division ;
+    sh:class Department: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 1 ;
+    sh:maxOccurs 1 ;
+    rdfs:subPropertyOf Entity:child ;
+    sh:order 3 ;
+    .    
+
+Application: a sh:NodeShape ;
+    sh:name "Application"^^xsd:string ;
+    rdfs:label "Application"^^xsd:string ;
+    sh:targetClass Application: ;
+    sh:declare [
+        sh:prefix "Application" ;
+        sh:namespace "http://ns.coreaa.ai/Application#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property Application:type,Application:module;
+    .
+
+Application:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path Application:type ;
+    sh:class ApplicationType: ;
+    rdfs:subPropertyOf Entity:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+
+Application:module a sh:PropertyShape ;
+    sh:name "module"^^xsd:string ;
+    rdfs:label "Module"^^xsd:string ;
+    sh:path Application:module ;
+    sh:class Module: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+ApplicationType: a sh:NodeShape ;
+    sh:name "ApplicationType"^^xsd:string ;
+    rdfs:label "Application Type"^^xsd:string ;
+    sh:targetClass ApplicationType: ;
+    sh:declare [
+        sh:prefix "ApplicationType" ;
+        sh:namespace "http://ns.coreaa.ai/ApplicationType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:nodeKind sh:IRI ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    .
+
+Module: a sh:NodeShape ;
+    sh:name "Module"^^xsd:string ;
+    rdfs:label "Module"^^xsd:string ;
+    sh:targetClass Module: ;
+    sh:declare [
+        sh:prefix "Module" ;
+        sh:namespace "http://ns.coreaa.ai/Module#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+    sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property Module:type,Module:component,Module:workFlow;
+    .
+
+Module:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path Module:type ;
+    sh:class ModuleType: ;
+    rdfs:subPropertyOf Entity:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+
+ModuleType: a sh:NodeShape ;
+    sh:name "ModuleType"^^xsd:string ;
+    rdfs:label "Module Type"^^xsd:string ;
+    sh:targetClass ModuleType: ;
+    sh:declare [
+        sh:prefix "ModuleType" ;
+        sh:namespace "http://ns.coreaa.ai/ModuleType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties Category:name,Category:description ;
+    .
+
+
+Module:component a sh:PropertyShape ;
+    sh:name "component"^^xsd:string ;
+    rdfs:label "Component"^^xsd:string ;
+    sh:path Module:component ;
+    sh:class Component: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+Module:workFlow  a sh:PropertyShape ;
+    sh:name "workFlow"^^xsd:string ;
+    rdfs:label "WorkFlow"^^xsd:string ;
+    sh:path Module:workFlow ;
+    sh:class WorkFlow: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+Component: a sh:NodeShape ;
+    sh:name "Component"^^xsd:string ;
+    rdfs:label "Component"^^xsd:string ;
+    sh:targetClass Component: ;
+    sh:declare [
+        sh:prefix "Component" ;
+        sh:namespace "http://ns.coreaa.ai/Component#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property Component:type,Component:dataSet;
+    .
+
+Component:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path Component:type ;
+    sh:class ComponentType: ;
+    rdfs:subPropertyOf Entity:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+
+ComponentType: a sh:NodeShape ;
+    sh:name "ComponentType"^^xsd:string ;
+    rdfs:label "Component Type"^^xsd:string ;
+    sh:targetClass ComponentType: ;
+    sh:declare [
+        sh:prefix "ComponentType" ;
+        sh:namespace "http://ns.coreaa.ai/ComponentType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    .
+
+Component:dataSet a sh:PropertyShape ;
+    sh:name "dataSet"^^xsd:string ;
+    rdfs:label "DataSet"^^xsd:string ;
+    sh:path Component:dataSet ;
+    sh:class DataSet: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+WorkFlow: a sh:NodeShape ;
+    sh:name "WorkFlow"^^xsd:string ;
+    rdfs:label "WorkFlow"^^xsd:string ;
+    sh:targetClass WorkFlow: ;
+    sh:declare [
+        sh:prefix "WorkFlow" ;
+        sh:namespace "http://ns.coreaa.ai/WorkFlow#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property WorkFlow:type;
+    .
+
+WorkFlow:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path WorkFlow:type ;
+    sh:class WorkFlowType: ;
+    rdfs:subPropertyOf Entity:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+
+WorkFlowType: a sh:NodeShape ;
+    sh:name "WorkFlowType"^^xsd:string ;
+    rdfs:label "WorkFlow Type"^^xsd:string ;
+    sh:targetClass WorkFlowType: ;
+    sh:declare [
+        sh:prefix "WorkFlowType" ;
+        sh:namespace "http://ns.coreaa.ai/WorkFlowType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    .
+
+DataSet: a sh:NodeShape ;
+    sh:name "DataSet"^^xsd:string ;
+    rdfs:label "DataSet"^^xsd:string ;
+    sh:targetClass DataSet: ;
+    sh:declare [
+        sh:prefix "DataSet" ;
+        sh:namespace "http://ns.coreaa.ai/DataSet#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property DataSet:type, DataSet:field;
+    .
+
+DataSet:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path DataSet:type ;
+    sh:class DataSetType: ;
+    rdfs:subPropertyOf Entity:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+
+DataSetType: a sh:NodeShape ;
+    sh:name "DataSetType"^^xsd:string ;
+    rdfs:label "DataSet Type"^^xsd:string ;
+    sh:targetClass DataSetType: ;
+    sh:declare [
+        sh:prefix "DataSetType" ;
+        sh:namespace "http://ns.coreaa.ai/DataSetType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    .
+
+DataSet:field a sh:PropertyShape ;
+    sh:name "field"^^xsd:string ;
+    rdfs:label "Field"^^xsd:string ;
+    sh:path DataSet:field ;
+    sh:class DataField: ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    rdfs:subPropertyOf Entity:child ;
+    .
+
+DataField: a sh:NodeShape ;
+    sh:name "DataField"^^xsd:string ;
+    rdfs:label "DataField"^^xsd:string ;
+    sh:targetClass DataField: ;
+    sh:declare [
+        sh:prefix "DataField" ;
+        sh:namespace "http://ns.coreaa.ai/DataField#"^^xsd:string
+    ];
+    rdfs:subClassOf Entity: ;
+        sh:ignoreProperties Entity:name,Entity:description, Entity:child, Entity:startDate, Entity:endDate ;
+    sh:property DataField:type, DataField:dataValue, DataField:property ;
+    .
+
+DataField:type a sh:PropertyShape ;
+    sh:name "type"^^xsd:string ;
+    rdfs:label "Type"^^xsd:string ;
+    sh:path DataField:type ;
+    sh:class DataFieldType: ;
+    rdfs:subPropertyOf Entity:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+
+DataFieldType: a sh:NodeShape ;
+    sh:name "DataFieldType"^^xsd:string ;
+    rdfs:label "DataFieldType"^^xsd:string ;
+    sh:targetClass DataFieldType: ;
+    sh:declare [
+        sh:prefix "DataFieldType" ;
+        sh:namespace "http://ns.coreaa.ai/DataFieldType#"^^xsd:string
+    ];
+    rdfs:subClassOf Category: ;
+    sh:ignoreProperties rdf:type,rdfs:label,rdfs:comment ;
+    .
+
+DataField:dataValue a sh:PropertyShape ;
+    sh:name "dataValue"^^xsd:string ;
+    rdfs:label "Data Value"^^xsd:string ;
+    sh:path DataField:dataValue ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    sh:minOccurs 0 ;
+    .
+
+DataField:property a sh:PropertyShape ;
+    sh:name "property"^^xsd:string ;
+    rdfs:label "Property"^^xsd:string ;
+    sh:path DataField:property ;
+    sh:class sh:PropertyShape ;
+    sh:nodeKind sh:IRI ;
+    sh:minOccurs 0 ;
+    .
+#=======================================================================
+
+
+

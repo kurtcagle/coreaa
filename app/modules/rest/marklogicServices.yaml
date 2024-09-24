@@ -1,0 +1,249 @@
+openapi: 3.1.0
+info:
+  title: Children Search API
+  description: API for searching children based on class name, field type, and query string.
+  version: 1.0.0
+servers:
+  - url: https://rug-charlie-cyber-explosion.trycloudflare.com
+paths:
+  /children/{className}/{fieldType}/{q}:
+    get:
+      operationId: children
+      summary: Search for children
+      description: Retrieve a list of children based on the specified class name, field type, and query string.
+      parameters:
+        - name: className
+          in: path
+          required: true
+          description: The semantic class name to filter children by.
+          schema:
+            type: string
+        - name: fieldType
+          in: path
+          required: true
+          description: The type of search to perform (contains or strstarts).
+          schema:
+            type: string
+            enum: [contains, strstarts]
+        - name: q
+          in: path
+          required: true
+          description: The search string to filter children by.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of children matching the search criteria.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    className:
+                      type: string
+                      description: The class name of the child.
+                    name:
+                      type: string
+                      description: The name of the child.
+        '400':
+          description: Invalid input, such as an invalid fieldType.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: A description of the error.
+        '404':
+          description: No children found matching the search criteria.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: A description of the error.
+  /files:
+    get:
+      operationId: getFiles
+      summary: Retrieve a list of files
+      description: Fetches a list of files stored in the MarkLogic instance.
+      responses:
+        '200':
+          description: A JSON array of file details
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    filename:
+                      type: string
+                    size:
+                      type: integer
+                    created:
+                      type: string
+                      format: date-time
+    post:
+      operationId: uploadFile
+      summary: Upload a new file
+      description: Uploads a new file to the MarkLogic instance.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                metadata:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: string
+      responses:
+        '201':
+          description: File uploaded successfully
+  /files/{filename}:
+    get:
+      operationId: getFile
+      summary: Retrieve a specific file
+      description: Fetches a specific file from the MarkLogic instance.
+      parameters:
+        - name: filename
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+    delete:
+      operationId: deleteFile
+      summary: Delete a specific file
+      description: Deletes a specific file from the MarkLogic instance.
+      parameters:
+        - name: filename
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: File deleted successfully
+    post:
+      operationId: saveFile
+      summary: Save data to a specific file
+      description: Saves or updates data in a specific file on the MarkLogic instance.
+      parameters:
+        - name: filename
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: The data to be saved in the file
+      responses:
+        '200':
+          description: File saved successfully
+        '400':
+          description: Bad request, for example, if the data is invalid
+        '404':
+          description: File not found
+  /children/{className}/{fieldType}/{q}:
+    get:
+      operationId: children
+      summary: Search for children
+      description: Retrieve a list of children based on the specified class name, field type, and query string.
+      parameters:
+        - name: className
+          in: path
+          required: true
+          description: The semantic class name to filter children by.
+          schema:
+            type: string
+        - name: fieldType
+          in: path
+          required: true
+          description: The type of search to perform (contains or strstarts).
+          schema:
+            type: string
+            enum: [contains, strstarts]
+        - name: q
+          in: path
+          required: true
+          description: The search string to filter children by.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of children matching the search criteria.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    className:
+                      type: string
+                      description: The class name of the child.
+                    name:
+                      type: string
+                      description: The name of the child.
+        '400':
+          description: Invalid input, such as an invalid fieldType.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: A description of the error.
+        '404':
+          description: No children found matching the search criteria.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: A description of the error.
+  /{page}:
+    get:
+      operationId: getPage
+      summary: Retrieve a markup page from a given page template
+      description: Retrieves a given page from a markup template.
+      parameters:
+        - name: page
+          in: path
+          required: true
+          description: The page to be retrieved.
+          schema:
+            type: string

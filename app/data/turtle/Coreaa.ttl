@@ -1,0 +1,1018 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix Entity: <http://ns.coreaa.ai/Entity#> .
+@prefix Category: <http://ns.coreaa.ai/Category#> .
+@prefix Platform: <http://ns.coreaa.ai/Platform#> .
+@prefix PlatformType: <http://ns.coreaa.ai/PlatformType#> .
+@prefix Org: <http://ns.coreaa.ai/Org#> .
+@prefix Company: <http://ns.coreaa.ai/Company#> .
+@prefix Vendor: <http://ns.coreaa.ai/Vendor#> .
+@prefix VendorType: <http://ns.coreaa.ai/VendorType#> .
+@prefix Person: <http://ns.coreaa.ai/Person#> .
+@prefix Role: <http://ns.coreaa.ai/Role#> .
+@prefix Address: <http://ns.coreaa.ai/Address#> .
+@prefix AddressType: <http://ns.coreaa.ai/AddressType#> .
+@prefix Department: <http://ns.coreaa.ai/Department#> .
+@prefix DepartmentType: <http://ns.coreaa.ai/DepartmentType#> .
+@prefix Division: <http://ns.coreaa.ai/Division#> .
+@prefix DivisionType: <http://ns.coreaa.ai/DivisionType#> .
+@prefix Application: <http://ns.coreaa.ai/Application#> .
+@prefix ApplicationType: <http://ns.coreaa.ai/ApplicationType#> .
+@prefix Module: <http://ns.coreaa.ai/Module#> .
+@prefix ModuleType: <http://ns.coreaa.ai/ModuleType#> .
+@prefix Component: <http://ns.coreaa.ai/Component#> .
+@prefix ComponentType: <http://ns.coreaa.ai/ComponentType#> .
+@prefix WorkFlow: <http://ns.coreaa.ai/WorkFlow#> .
+@prefix WorkFlowType: <http://ns.coreaa.ai/WorkFlowType#> .
+@prefix DataSet: <http://ns.coreaa.ai/DataSet#> .
+@prefix DataSetType: <http://ns.coreaa.ai/DataSetType#> .
+@prefix DataField: <http://ns.coreaa.ai/DataField#> .
+@prefix DataFieldType: <http://ns.coreaa.ai/DataFieldType#> .
+
+
+# Platforms
+Platform:DevOps a Platform: ;
+    Entity:name "Microsoft DevOps Platform" ;
+    Platform:vendor Vendor:Microsoft ;
+    Platform:type PlatformType:CloudBased ;
+    Platform:application Application:AzureDevOps, Application:GitHubActions, Application:AzurePipelines .
+
+Platform:CloudBased a Platform: ;
+    Entity:name "Amazon Cloud Based Platform" ;
+    Platform:vendor Vendor:Amazon ;
+    Platform:type PlatformType:CloudBased ;
+    Platform:application Application:EC2, Application:S3, Application:RDS .
+
+Platform:AIplatform a Platform: ;
+    Entity:name "Google AI Platform" ;
+    Platform:vendor Vendor:Google ;
+    Platform:type PlatformType:MachineLearning ;
+    Platform:application Application:TensorFlow, Application:CloudML, Application:CloudVision .
+
+Platform:Epic a Platform: ;
+    Entity:name "Epic" ;
+    Entity:description "Epic is a platform that provides a suite of tools for managing and tracking software development projects." ;
+    Platform:vendor Vendor:Atlassian ;
+    Platform:type PlatformType:ProjectManagement ;
+    Platform:application Application:Jira ;
+    .
+
+
+# Platform Types
+
+PlatformType:MachineLearning a PlatformType: ;  
+    Entity:name "Machine Learning" ;
+    .
+
+PlatformType:DevOps a PlatformType: ;
+    Entity:name "DevOps" ;
+    .
+
+PlatformType:CloudBased a PlatformType: ;
+    Entity:name "Cloud Based" ;
+    .
+
+PlatformType:ProjectManagement a PlatformType: ;
+    Entity:name "Project Management" ;
+    .
+
+
+# Vendors
+Vendor:Microsoft a Vendor: ;
+    Entity:name "Microsoft" ;
+    Entity:description "Microsoft Corporation" ;
+    Vendor:type VendorType:SoftwareCompany, VendorType:CloudProvider, VendorType:MachineLearningPlatform ;
+    Org:executive Person:JaneDoe ;
+    Company:revenue 143000000000 .
+
+Vendor:Amazon a Vendor: ;
+    Entity:name "Amazon" ;
+    Entity:description "Amazon.com, Inc." ;
+    Org:executive Person:BobJohnson ;
+    Vendor:type VendorType:ECommerceCompany, VendorType:CloudProvider, VendorType:MachineLearningPlatform ;
+    Company:revenue 386000000000 .
+
+Vendor:Atlassian a Vendor: ;
+    Entity:name "Atlassian" ;
+    Entity:description "Atlassian, Inc." ;
+    Org:executive Person:BobJohnson ;
+    Vendor:type VendorType:ECommerceCompany, VendorType:CloudProvider, VendorType:MachineLearningPlatform ;
+    Company:revenue 386000000000 .
+
+Vendor:Google a Vendor: ;
+    Entity:name "Google" ;
+    Org:executive Person:JohnSmith ;
+    Entity:description "Google LLC" ;
+    Vendor:type VendorType:SoftwareCompany, VendorType:CloudProvider, VendorType:MachineLearningPlatform ;
+    Company:revenue 257000000000 .
+
+# Vendor Types
+VendorType:SoftwareCompany a VendorType: ;
+    Entity:name "Software Company" ;
+    .
+
+VendorType:CloudProvider a VendorType: ;
+    Entity:name "Cloud Provider" ;
+    .
+
+VendorType:ECommerceCompany a VendorType: ;
+    Entity:name "E-Commerce Company" ;
+    .
+
+VendorType:MachineLearningPlatform a VendorType: ;
+    Entity:name "Machine Learning Platform" ;
+    .
+
+
+
+# Applications
+Application:AzureDevOps a Application: ;
+    Entity:name "Azure DevOps" ;
+    Application:type ApplicationType:DevOps ;
+    Application:module Module:Boards, Module:Repos, Module:Pipelines, Module:TestPlans, Module:Artifacts .
+
+Application:GitHubActions a Application: ;
+    Entity:name "GitHub Actions" ;
+    Application:type ApplicationType:ContinuousIntegration ;
+    Application:module Module:WorkFlows, Module:Actions, Module:Secrets .
+
+Application:AzurePipelines a Application: ;
+    Entity:name "Azure Pipelines" ;
+    Application:type ApplicationType:ContinuousDelivery ;
+    Application:module Module:BuildPipelines, Module:ReleasePipelines, Module:LibraryManagement .
+
+Application:EC2 a Application: ;
+    Entity:name "Amazon EC2" ;
+    Application:type ApplicationType:CloudCompute ;
+    Application:module Module:Instances .
+
+Application:S3 a Application: ;
+    Entity:name "Amazon S3" ;
+    Application:type ApplicationType:CloudStorage ;
+    Application:module Module:Buckets .
+
+Application:RDS a Application: ;
+    Entity:name "Amazon RDS" ;
+    Application:type ApplicationType:DatabaseService ;
+    Application:module Module:DBInstances .
+
+Application:TensorFlow a Application: ;
+    Entity:name "TensorFlow" ;
+    Application:type ApplicationType:MachineLearning ;
+    Application:module Module:Keras, Module:DataValidation .
+
+Application:CloudML a Application: ;
+    Entity:name "Google Cloud ML Engine" ;
+    Application:type ApplicationType:MachineLearningPlatform ;
+    Application:module Module:ModelTraining .
+
+Application:CloudVision a Application: ;
+    Entity:name "Google Cloud Vision" ;
+    Application:type ApplicationType:ComputerVision ;
+    Application:module Module:ImageClassification, Module:ObjectDetection, Module:OCR .
+
+# Application Types
+ApplicationType:CloudStorage a ApplicationType: ;
+    Entity:name "Cloud Storage" ;
+    .
+
+ApplicationType:ComputerVision a ApplicationType: ;
+    Entity:name "Computer Vision" ;
+    .
+
+ApplicationType:ContinuousDelivery a ApplicationType: ;
+    Entity:name "Continuous Delivery" ;
+    .
+
+ApplicationType:ContinuousIntegration a ApplicationType: ;
+    Entity:name "Continuous Integration" ;
+    .
+
+ApplicationType:DatabaseService a ApplicationType: ;
+    Entity:name "Database Service" ;
+    .
+
+ApplicationType:DevOps a ApplicationType: ;
+    Entity:name "DevOps" ;
+    .
+
+ApplicationType:MachineLearning a ApplicationType: ;
+    Entity:name "Machine Learning" ;
+    .
+
+ApplicationType:MachineLearningPlatform a ApplicationType: ;
+    Entity:name "Machine Learning Platform" ;
+    .
+
+ApplicationType:CloudCompute a ApplicationType: ;
+    Entity:name "Cloud Compute" ;
+    .
+
+ApplicationType:ProjectManagement a ApplicationType: ;
+    Entity:name "Project Management" ;
+    .
+
+# Modules
+Module:Boards a Module: ;
+    Entity:name "Azure Boards" ;
+    Module:type ModuleType:ProjectManagement ;
+    Module:component Component:Backlog, Component:Sprints, Component:Dashboards ;
+    Module:workflow WorkFlow:AgileWorkFlow .
+
+Module:Repos a Module: ;
+    Entity:name "Azure Repos" ;
+    Module:type ModuleType:VersionControl ;
+    Module:component Component:GitRepositories, Component:PullRequests, Component:CodeReview ;
+    Module:workflow WorkFlow:GitWorkFlow .
+
+Module:Pipelines a Module: ;
+    Entity:name "Azure Pipelines" ;
+    Module:type ModuleType:ContinuousIntegration ;
+    Module:component Component:BuildDefinitions, Component:ReleaseDefinitions, Component:Environments ;
+    Module:workflow WorkFlow:CICDWorkFlow .
+
+Module:TestPlans a Module: ;
+    Entity:name "Azure Test Plans" ;
+    Module:type ModuleType:Testing ;
+    Module:component Component:TestCases, Component:TestSuites, Component:TestExecution ;
+    Module:workflow WorkFlow:TestManagementWorkFlow .
+
+Module:Artifacts a Module: ;
+    Entity:name "Azure Artifacts" ;
+    Module:type ModuleType:PackageManagement ;
+    Module:component Component:Feeds, Component:Packages, Component:Upstream ;
+    Module:workflow WorkFlow:PackagePublishingWorkFlow .
+
+Module:WorkFlows a Module: ;
+    Entity:name "GitHub WorkFlows" ;
+    Module:type ModuleType:ContinuousIntegration ;
+    Module:component Component:Actions, Component:WorkFlows, Component:Secrets ;
+    Module:workflow WorkFlow:GitWorkFlow .
+
+Module:Actions a Module: ;
+    Entity:name "GitHub Actions" ;
+    Module:type ModuleType:ContinuousIntegration ;
+    Module:component Component:Actions, Component:WorkFlows, Component:Secrets ;
+    Module:workflow WorkFlow:GitWorkFlow .
+
+Module:Secrets a Module: ;
+    Entity:name "GitHub Secrets" ;
+    Module:type ModuleType:Security ;
+    Module:component Component:Secrets, Component:Keys, Component:Certificates ;
+    Module:workflow WorkFlow:SecurityWorkFlow . 
+
+Module:BuildPipelines a Module: ;
+    Entity:name "Azure Build Pipelines" ;
+    Module:type ModuleType:ContinuousIntegration ;
+    Module:component Component:BuildPipelines, Component:BuildTasks, Component:BuildAgents ;
+    Module:workflow WorkFlow:CICDWorkFlow .
+
+Module:ReleasePipelines a Module: ;
+    Entity:name "Azure Release Pipelines" ;
+    Module:type ModuleType:ContinuousDelivery ;
+    Module:component Component:ReleasePipelines, Component:ReleaseTasks, Component:ReleaseAgents ;
+    Module:workflow WorkFlow:CICDWorkFlow .
+
+Module:LibraryManagement a Module: ;
+    Entity:name "Azure Library Management" ;
+    Module:type ModuleType:PackageManagement ;
+    Module:component Component:Feeds, Component:Packages, Component:Upstream ;
+    Module:workflow WorkFlow:PackagePublishingWorkFlow .
+
+Module:Instances a Module: ;
+    Entity:name "Amazon EC2 Instances" ;
+    Module:type ModuleType:CloudCompute ;
+    Module:component Component:Instances, Component:AMIs, Component:SecurityGroups ;
+    Module:workflow WorkFlow:InstanceManagementWorkFlow .
+
+Module:Buckets a Module: ;
+    Entity:name "Amazon S3 Buckets" ;
+    Module:type ModuleType:CloudStorage ;
+    Module:component Component:Buckets, Component:Objects, Component:Permissions ;
+    Module:workflow WorkFlow:BucketManagementWorkFlow .
+
+Module:DBInstances a Module: ;
+    Entity:name "Amazon RDS DB Instances" ;
+    Module:type ModuleType:DatabaseService ;
+    Module:component Component:DBInstances, Component:Backups, Component:ParameterGroups ;
+    Module:workflow WorkFlow:DatabaseManagementWorkFlow .
+
+Module:Keras a Module: ;
+    Entity:name "TensorFlow Keras" ;
+    Module:type ModuleType:MachineLearning ;
+    Module:component Component:KerasModels, Component:KerasLayers, Component:KerasCallbacks ;
+    Module:workflow WorkFlow:KerasWorkFlow .
+
+Module:GoogleCloudMLModelTraining a Module: ;
+    Entity:name "Google Cloud ML Model Training" ;
+    Module:type ModuleType:MachineLearning ;
+    Module:component Component:ModelTraining, Component:ModelEvaluation, Component:ModelDeployment ;
+    Module:workflow WorkFlow:ModelTrainingWorkFlow .
+
+Module:GoogleCloudImageClassification a Module: ;
+    Entity:name "Google Cloud Vision Image Classification" ;
+    Module:type ModuleType:ComputerVision    ;
+    Module:component Component:ImageClassification, Component:ObjectDetection, Component:OCR ;
+    Module:workflow WorkFlow:ImageClassificationWorkFlow .
+
+Module:MicrosoftAzureMLModelTraining a Module: ;
+    Entity:name "Microsoft Azure ML Model Training" ;
+    Module:type ModuleType:MachineLearning ;
+    Module:component Component:ModelTraining, Component:ModelEvaluation, Component:ModelDeployment ;
+    Module:workflow WorkFlow:ModelTrainingWorkFlow .
+
+Module:DataValidation a Module: ;
+    Entity:name "Microsoft Azure ML Model Training" ;
+    Module:type ModuleType:MachineLearning ;
+    Module:component Component:DataValidation, Component:DataPreparation, Component:DataExploration ;
+    Module:workflow WorkFlow:DataValidationWorkFlow .
+
+Module:ObjectDetection a Module: ;
+    Entity:name "Google Cloud ML Object Detection" ;
+    Module:type ModuleType:MachineLearning ;
+    .
+
+Module:ModelTraining
+    Entity:name "Google Cloud ML Model Training" ;
+    Module:type ModuleType:MachineLearning ;
+    .
+
+# Module Types
+ModuleType:ContinuousIntegration a ModuleType: ;
+    Entity:name "Continuous Integration" ;
+    .
+
+ModuleType:ContinuousDelivery a ModuleType: ;
+    Entity:name "Continuous Delivery" ;
+    .
+
+ModuleType:ProjectManagement a ModuleType: ;
+    Entity:name "Project Management" ;
+    .
+
+ModuleType:VersionControl a ModuleType: ;
+    Entity:name "Version Control" ;
+    .
+
+ModuleType:Testing a ModuleType: ;
+    Entity:name "Testing" ;
+    .
+
+ModuleType:PackageManagement a ModuleType: ;
+    Entity:name "Package Management" ;
+    .
+
+
+ModuleType:Security a ModuleType: ;
+    Entity:name "Security" ;
+    .
+
+ModuleType:MachineLearning a ModuleType: ;
+    Entity:name "Machine Learning" ;
+    .
+
+ModuleType:CloudCompute a ModuleType: ;
+    Entity:name "Cloud Compute" ;
+    .
+
+ModuleType:CloudStorage a ModuleType: ;
+    Entity:name "Cloud Storage" ;
+    .
+
+ModuleType:DatabaseService a ModuleType: ;
+    Entity:name "Database Service" ;
+    .
+
+ModuleType:ComputerVision a ModuleType: ;
+    Entity:name "Computer Vision" ;
+    .
+
+
+
+# Components (for Azure Boards as an example)
+Component:Backlog a Component: ;
+    Entity:name "Backlog" ;
+    Component:type ComponentType:ProjectManagement ;
+    Component:dataSet DataSet:BacklogItems .
+
+Component:Sprints a Component: ;
+    Entity:name "Sprints" ;
+    Component:type ComponentType:ProjectManagement ;
+    Component:dataSet DataSet:SprintItems .
+
+Component:Dashboards a Component: ;
+    Entity:name "Dashboards" ;
+    Component:type ComponentType:Reporting ;
+    Component:dataSet DataSet:DashboardWidgets .
+
+Component:GitRepositories a Component: ;
+    Entity:name "Git Repositories" ;
+    Component:type ComponentType:VersionControl ;
+    Component:dataSet DataSet:GitRepos .
+
+Component:PullRequests a Component: ;   
+    Entity:name "Pull Requests" ;
+    Component:type ComponentType:VersionControl ;
+    Component:dataSet DataSet:PullRequests .
+
+Component:CodeReview a Component: ;
+    Entity:name "Code Review" ;
+    Component:type ComponentType:VersionControl ;
+    Component:dataSet DataSet:CodeReviews .
+
+Component:BuildDefinitions a Component: ;
+    Entity:name "Build Definitions" ;
+    Component:type ComponentType:ContinuousIntegration ;
+    Component:dataSet DataSet:BuildDefs .
+
+Component:ReleaseDefinitions a Component: ;
+    Entity:name "Release Definitions" ;
+    Component:type ComponentType:ContinuousDelivery ;
+    Component:dataSet DataSet:ReleaseDefs .
+
+Component:Environments a Component: ;
+    Entity:name "Environments" ;
+    Component:type ComponentType:ContinuousDelivery ;
+    Component:dataSet DataSet:Environments .
+
+Component:TestCases a Component: ;
+    Entity:name "Test Cases" ;
+    Component:type ComponentType:Testing ;
+    Component:dataSet DataSet:TestCases .
+
+Component:TestSuites a Component: ;
+    Entity:name "Test Suites" ;
+    Component:type ComponentType:Testing ;
+    Component:dataSet DataSet:TestSuites .
+
+Component:TestExecution a Component: ;
+    Entity:name "Test Execution" ;
+    Component:type ComponentType:Testing ;
+    Component:dataSet DataSet:TestExecutions .
+
+Component:Feeds a Component: ;
+    Entity:name "Feeds" ;
+    Component:type ComponentType:PackageManagement ;
+    Component:dataSet DataSet:Feeds .
+
+Component:Packages a Component: ;
+    Entity:name "Packages" ;
+    Component:type ComponentType:PackageManagement ;
+    Component:dataSet DataSet:Packages .
+
+Component:Upstream a Component: ;
+    Entity:name "Upstream" ;
+    Component:type ComponentType:PackageManagement ;
+    Component:dataSet DataSet:Upstream .
+
+Component:Actions a Component: ;
+    Entity:name "Actions" ;
+    Component:type ComponentType:ContinuousIntegration ;
+    Component:dataSet DataSet:Actions .
+
+Component:WorkFlows a Component: ;
+    Entity:name "WorkFlows" ;
+    Component:type ComponentType:ContinuousIntegration ;
+    Component:dataSet DataSet:WorkFlows .
+
+Component:Secrets a Component: ;
+    Entity:name "Secrets" ;
+    Component:type ComponentType:Security ;
+    Component:dataSet DataSet:Secrets .
+
+Component:BuildPipelines a Component: ;
+    Entity:name "Build Pipelines" ;
+    Component:type ComponentType:ContinuousIntegration ;
+    Component:dataSet DataSet:BuildPipelines .
+
+Component:ReleasePipelines a Component: ;
+    Entity:name "Release Pipelines" ;
+    Component:type ComponentType:ContinuousDelivery ;
+    Component:dataSet DataSet:ReleasePipelines .
+
+Component:LibraryManagement a Component: ;
+    Entity:name "Library Management" ;
+    Component:type ComponentType:PackageManagement ;
+    Component:dataSet DataSet:LibraryManagement .
+
+Component:Instances a Component: ;
+    Entity:name "Instances" ;
+    Component:type ComponentType:CloudCompute ;
+    Component:dataSet DataSet:Instances .
+
+Component:AMIs a Component: ;
+    Entity:name "AMIs" ;
+    Component:type ComponentType:CloudCompute ;
+    Component:dataSet DataSet:AMIs .
+
+Component:SecurityGroups a Component: ;
+    Entity:name "Security Groups" ;
+    Component:type ComponentType:CloudCompute ;
+    Component:dataSet DataSet:SecurityGroups .
+
+Component:Buckets a Component: ;
+    Entity:name "Buckets" ;
+    Component:type ComponentType:CloudStorage ;
+    Component:dataSet DataSet:Buckets .
+
+Component:Objects a Component: ;
+    Entity:name "Objects" ;
+    Component:type ComponentType:CloudStorage ;
+    Component:dataSet DataSet:Objects .
+
+Component:Permissions a Component: ;
+    Entity:name "Permissions" ;
+    Component:type ComponentType:CloudStorage ;
+    Component:dataSet DataSet:Permissions .
+
+Component:DBInstances a Component: ;
+    Entity:name "DB Instances" ;
+    Component:type ComponentType:DatabaseService ;
+    Component:dataSet DataSet:DBInstances .
+
+Component:Backups a Component: ;
+    Entity:name "Backups" ;
+    Component:type ComponentType:DatabaseService ;
+    Component:dataSet DataSet:Backups .
+
+Component:ParameterGroups a Component: ;
+    Entity:name "Parameter Groups" ;
+    Component:type ComponentType:DatabaseService ;
+    Component:dataSet DataSet:ParameterGroups .
+
+Component:KerasModels a Component: ;
+    Entity:name "Keras Models" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:KerasModels .
+
+Component:KerasLayers a Component: ;
+    Entity:name "Keras Layers" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:KerasLayers .
+
+Component:KerasCallbacks a Component: ;
+    Entity:name "Keras Callbacks" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:KerasCallbacks .
+
+Component:ModelTraining a Component: ;
+    Entity:name "Model Training" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:ModelTraining .
+
+Component:ModelEvaluation a Component: ;
+    Entity:name "Model Evaluation" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:ModelEvaluation .
+
+Component:ModelDeployment a Component: ;
+    Entity:name "Model Deployment" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:ModelDeployment .
+
+Component:ImageClassification a Component: ;
+    Entity:name "Image Classification" ;
+    Component:type ComponentType:ComputerVision ;
+    Component:dataSet DataSet:ImageClassification .
+
+Component:ObjectDetection a Component: ;
+    Entity:name "Object Detection" ;
+    Component:type ComponentType:ComputerVision ;
+    Component:dataSet DataSet:ObjectDetection .
+
+Component:OCR a Component: ;
+    Entity:name "OCR" ;
+    Component:type ComponentType:ComputerVision ;
+    Component:dataSet DataSet:OCR .
+
+Component:DataValidation a Component: ;
+    Entity:name "Data Validation" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:DataValidation .
+
+Component:DataPreparation a Component: ;
+    Entity:name "Data Preparation" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:DataPreparation .
+
+Component:DataExploration a Component: ;
+    Entity:name "Data Exploration" ;
+    Component:type ComponentType:MachineLearning ;
+    Component:dataSet DataSet:DataExploration .
+
+
+
+# Component Types
+ComponentType:ProjectManagement a ComponentType: ;
+    Entity:name "Project Management" ;
+    .
+
+ComponentType:VersionControl a ComponentType: ;
+    Entity:name "Version Control" ;
+    .
+
+ComponentType:ContinuousIntegration a ComponentType: ;  
+    Entity:name "Continuous Integration" ;
+    .
+ComponentType:ContinuousDelivery a ComponentType: ;
+    Entity:name "Continuous Delivery" ;
+    .
+
+ComponentType:Testing a ComponentType: ;    
+    Entity:name "Testing" ;
+    .
+
+ComponentType:PackageManagement a ComponentType: ;
+    Entity:name "Package Management" ;
+    .
+
+
+ComponentType:Security a ComponentType: ;
+    Entity:name "Security" ;
+    .
+
+ComponentType:MachineLearning a ComponentType: ;
+    Entity:name "Machine Learning" ;
+    .
+
+ComponentType:CloudCompute a ComponentType: ;
+    Entity:name "Cloud Compute" ;
+    .
+
+ComponentType:CloudStorage a ComponentType: ;
+    Entity:name "Cloud Storage" ;
+    .
+
+ComponentType:DatabaseService a ComponentType: ;
+    Entity:name "Database Service" ;
+    .
+
+ComponentType:ComputerVision a ComponentType: ;
+    Entity:name "Computer Vision" ;
+    .
+
+# WorkFlows
+WorkFlow:AgileWorkFlow a WorkFlow: ;
+    Entity:name "Agile WorkFlow" ;
+    WorkFlow:type WorkFlowType:Agile .
+
+WorkFlow:GitWorkFlow a WorkFlow: ;
+    Entity:name "Git WorkFlow" ;
+    WorkFlow:type WorkFlowType:VersionControl .
+
+WorkFlow:CICDWorkFlow a WorkFlow: ;
+    Entity:name "CI/CD WorkFlow" ;
+    WorkFlow:type WorkFlowType:ContinuousDelivery .
+
+
+# WorkFlow Types
+
+WorkFlowType:Agile a WorkFlowType: ;
+    Entity:name "Agile" ;
+    .
+
+WorkFlowType:VersionControl a WorkFlowType: ;
+    Entity:name "Version Control" ;
+    .
+
+WorkFlowType:ContinuousIntegration a WorkFlowType: ;
+    Entity:name "Continuous Integration" ;
+    .
+
+WorkFlowType:ContinuousDelivery a WorkFlowType: ;
+    Entity:name "Continuous Delivery" ;
+    .
+
+WorkFlowType:Testing a WorkFlowType: ;
+    Entity:name "Testing" ;
+    .
+
+WorkFlowType:PackageManagement a WorkFlowType: ;
+    Entity:name "Package Management" ;
+    .
+
+WorkFlowType:Security a WorkFlowType: ;
+    Entity:name "Security" ;
+    .
+
+WorkFlowType:CloudCompute a WorkFlowType: ;
+    Entity:name "Cloud Compute" ;
+    .
+
+WorkFlowType:CloudStorage a WorkFlowType: ;
+    Entity:name "Cloud Storage" ;
+    .
+
+WorkFlowType:DatabaseService a WorkFlowType: ;
+    Entity:name "Database Service" ;
+    .
+
+WorkFlowType:MachineLearning a WorkFlowType: ;
+    Entity:name "Machine Learning" ;
+    .
+
+# DataSets
+DataSet:BacklogItems a DataSet: ;
+    Entity:name "Backlog Items" ;
+    DataSet:type DataSetType:ProjectManagement ;
+    DataSet:field DataField:Title, DataField:Description, DataField:Priority, DataField:Effort, DataField:Status .
+
+DataSet:SprintItems a DataSet: ;
+    Entity:name "Sprint Items" ;
+    DataSet:type DataSetType:ProjectManagement ;
+    DataSet:field DataField:Title, DataField:RemainingWork, DataField:AssignedTo, DataField:SprintName .
+
+DataSet:DashboardWidgets a DataSet: ;
+    Entity:name "Dashboard Widgets" ;
+    DataSet:type DataSetType:Reporting ;
+    DataSet:field DataField:WidgetType, DataField:DataSource, DataField:Refresh .
+
+# DataSet Types
+
+DataSetType:ProjectManagement a DataSetType: ;
+    Entity:name "Project Management" ;
+    .
+
+DataSetType:VersionControl a DataSetType: ;
+    Entity:name "Version Control" ;
+    .
+
+DataSetType:ContinuousIntegration a DataSetType: ;
+    Entity:name "Continuous Integration" ;
+    .
+
+DataSetType:ContinuousDelivery a DataSetType: ;
+    Entity:name "Continuous Delivery" ;
+    .
+
+DataSetType:Testing a DataSetType: ;
+    Entity:name "Testing" ;
+    .
+
+DataSetType:PackageManagement a DataSetType: ;
+    Entity:name "Package Management" ;
+    .
+
+DataSetType:Security a DataSetType: ;
+    Entity:name "Security" ;
+    .
+
+DataSetType:MachineLearning a DataSetType: ;
+    Entity:name "Machine Learning" ;
+    .
+
+DataSetType:CloudCompute a DataSetType: ;
+    Entity:name "Cloud Compute" ;
+    .
+
+DataSetType:CloudStorage a DataSetType: ;
+    Entity:name "Cloud Storage" ;
+    .
+
+DataSetType:DatabaseService a DataSetType: ;
+    Entity:name "Database Service" ;
+    .
+
+DataSetType:ComputerVision a DataSetType: ;
+    Entity:name "Computer Vision" ;
+    .
+
+# DataFields (for BacklogItems as an example)
+DataField:Title a DataField: ;
+    Entity:name "Title" ;
+    DataField:type DataFieldType:String ;
+    DataField:dataValue "Implement User Authentication" .
+
+DataField:Description a DataField: ;
+    Entity:name "Description" ;
+    DataField:type DataFieldType:Text ;
+    DataField:dataValue "Implement a secure user authentication system using OAuth 2.0" .
+
+DataField:Priority a DataField: ;
+    Entity:name "Priority" ;
+    DataField:type DataFieldType:Integer ;
+    DataField:dataValue "1" .
+
+DataField:Effort a DataField: ;
+    Entity:name "Effort" ;
+    DataField:type DataFieldType:Float ;
+    DataField:dataValue "13.5" .
+
+DataField:Status a DataField: ;
+    Entity:name "Status" ;
+    DataField:type DataFieldType:String ;
+    DataField:dataValue "In Progress" .
+
+DataField:RemainingWork a DataField: ;
+    Entity:name "Remaining Work" ;
+    DataField:type DataFieldType:ProjectManagement ;
+    DataField:dataValue "5 hours" .
+
+DataField:AssignedTo a DataField: ;
+    Entity:name "Assigned To" ;
+    DataField:type DataFieldType:ProjectManagement ;
+    DataField:dataValue "John Doe" .
+
+DataField:SprintName a DataField: ;
+    Entity:name "Sprint Name" ;
+    DataField:type DataFieldType:ProjectManagement ;
+    DataField:dataValue "Sprint 23" .
+
+DataField:WidgetType a DataField: ;
+    Entity:name "Widget Type" ;
+    DataField:type DataFieldType:Reporting ;
+    DataField:dataValue "Burndown Chart" .
+
+DataField:DataSource a DataField: ;
+    Entity:name "Data Source" ;
+    DataField:type DataFieldType:Reporting ;
+    DataField:dataValue "Jira API" .
+
+
+# DataField Types
+DataFieldType:String a DataFieldType: ;
+    Entity:name "String" ;
+    .
+
+DataFieldType:Text a DataFieldType: ;   
+    Entity:name "Text" ;
+    .
+
+DataFieldType:Integer a DataFieldType: ;
+    Entity:name "Integer" ;
+    .
+
+DataFieldType:Float a DataFieldType: ;
+    Entity:name "Float" ;
+    .
+
+
+DataFieldType:Date a DataFieldType: ;
+    Entity:name "Date" ;
+    .
+
+
+DataFieldType:DateTime a DataFieldType: ;
+    Entity:name "DateTime" ;
+    .
+
+
+# Persons
+Person:JohnSmith a Person: ;
+    Entity:name "John Smith" ;
+    Entity:description "Chief Technology Officer at Google" ;
+    Person:firstName "John" ;
+    Person:lastName "Smith" ;
+    Person:email "john.smith@google.com" ;
+    Person:phone "+1-555-1234" ;
+    Person:address Address:JohnSmithHome ;
+    Person:department Department:Engineering ;
+    Person:division Division:SoftwareDevelopment ;
+    Person:role Role:CTO ;
+    Person:manager Person:JaneDoe .
+
+Person:JaneDoe a Person: ;
+    Entity:name "Jane Doe" ;
+    Entity:description "Chief Executive Officer at Microsoft" ;
+    Person:firstName "Jane" ;
+    Person:lastName "Doe" ;
+    Person:email "jane.doe@microsoft.com" ;
+    Person:phone "+1-555-5678","+1-555-3921" ;
+    Person:address Address:JaneDoeHome ;
+    Person:department Department:ExecutiveManagement ;
+    Person:division Division:CorporateManagement ;
+    Person:role Role:CEO .
+
+Person:BobJohnson a Person: ;
+    Entity:name "Bob Johnson" ;
+    Entity:description "Senior Software Engineer at Amazon" ;
+    Person:firstName "Bob" ;
+    Person:lastName "Johnson" ;
+    Person:email "bob.johnson@contoso.com" ;
+    Person:phone "+1-555-9012" ;
+    Person:address Address:BobJohnsonHome ;
+    Person:department Department:ProductDevelopment ;
+    Person:division Division:SoftwareDevelopment ;
+    Person:role Role:SeniorEngineer ;
+    Person:manager Person:JohnSmith .
+
+Role:CTO a Role: ;
+    Entity:name "Chief Technology Officer" ;
+    .
+
+Role:CEO a Role: ;
+    Entity:name "Chief Executive Officer" ;
+    .
+
+Role:SeniorEngineer a Role: ;
+    Entity:name "Senior Software Engineer" ;
+    .
+
+
+# Addresses
+Address:ContosoHQ a Address: ;
+    Entity:name "Contoso Headquarters" ;
+    Address:street "123 Main St" ;
+    Address:city "Seattle" ;
+    Address:state "WA" ;
+    Address:zip "98101" ;
+    Address:country "USA" .
+
+Address:JohnSmithHome a Address: ;
+    Entity:name "456 Oak Ave, Bellevue, WA 98004" ;
+    Address:street "456 Oak Ave" ;
+    Address:city "Bellevue" ;
+    Address:state "WA" ;
+    Address:zip "98004" ;
+    Address:country "USA" .
+
+Address:JaneDoeHome a Address: ;
+    Entity:name "789 Pine St, Redmond WA 98052" ;
+    Address:street "789 Pine St" ;
+    Address:city "Redmond" ;
+    Address:state "WA" ;
+    Address:zip "98052" ;
+    Address:country "USA" .
+
+Address:BobJohnsonHome a Address: ;
+    Entity:name "321 Elm St, Kirkland, WA 98033" ;
+    Address:street "321 Elm St" ;
+    Address:city "Kirkland" ;
+    Address:state "WA" ;
+    Address:zip "98033" ;
+    Address:country "USA" .
+
+# Departments
+Department:Engineering a Department: ;
+    Entity:name "Engineering Department" ;
+    Department:type DepartmentType:Technical ;
+    Department:division Division:SoftwareDevelopment .
+
+Department:ExecutiveManagement a Department: ;
+    Entity:name "Executive Management Department" ;
+    Department:type DepartmentType:Management ;
+    Department:division Division:CorporateManagement .
+
+Department:ProductDevelopment a Department: ;
+    Entity:name "Product Development Department" ;
+    Department:type DepartmentType:Technical ;
+    Department:division Division:SoftwareDevelopment .
+
+# DepartmentTypes
+
+DepartmentType:Technical a DepartmentType: ;
+    Entity:name "Technical Department" ;
+    .
+
+DepartmentType:Management a DepartmentType: ;
+    Entity:name "Management Department" ;
+    .
+
+
+
+# Divisions
+Division:SoftwareDevelopment a Division: ;
+    Entity:name "Software Development Division" .
+
+Division:CorporateManagement a Division: ;
+    Entity:name "Corporate Management Division" .
+
+Division:CloudServices a Division: ;
+    Entity:name "Cloud Services Division" .
+
+## Example of a more complex graph
+
+Application:Jira a Application: ;
+    Entity:name "Jira" ;
+    Application:type ApplicationType:ProjectManagement ;
+    Application:module Module:JiraModule ;
+    .  
+
+
+
+Module:JiraModule a Module: ;
+    Entity:name "JiraModule" ;
+    Module:type ModuleType:ProjectManagement ;
+    Module:component Component:JiraComponent ;
+    Module:workflow WorkFlow:JiraWorkFlow ;
+    .
+
+Component:JiraComponent a Component: ;  
+    Entity:name "JiraComponent" ;
+    Component:type ComponentType:ProjectManagement ;
+    Component:dataSet DataSet:JiraDataSet ;
+    .
+
+DataSet:JiraDataSet a DataSet: ;
+    Entity:name "JiraDataSet" ;
+    DataSet:type DataSetType:ProjectManagement ;
+    DataSet:field DataField:JiraDataField ;
+    .
+
+DataField:JiraDataField a DataField: ;  
+    Entity:name "JiraDataField" ;
+    DataField:type DataFieldType:ProjectManagement ;
+    DataField:dataValue "JiraDataValue" ;
+    DataField:property DataField:JiraProperty ;
+    .

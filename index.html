@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <title>Navigator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    /* Left pane: Chat interface */
+    .left-pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+      background-color: #ffffff;
+      padding: 10px;
+      min-width: 200px;
+    }
+    .chat-window {
+      flex: 1;
+      border: 1px solid #ddd;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: #f9f9f9;
+    }
+    .editor-buttons {
+      display: flex;
+      margin-bottom: 10px;
+      background-color:navy
+    }
+    .editor-buttons button {
+      padding: 3px 6px;
+      cursor: pointer;
+      font-weight:bold;
+      font-size:9pt;
+    }
+    .prompt-upload {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .prompt-window {
+      flex-grow: 1;
+    }
+    .prompt-window textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      resize: none;
+    }
+    .upload-btn {
+      display: flex;
+      align-items: center;
+    }
+    .upload-btn input[type="file"] {
+      display: none;
+    }
+    .upload-label {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Vertical drag bar */
+    .drag-bar {
+      width: 5px;
+      cursor: ew-resize;
+      background-color: #ccc;
+      height: 100%;
+    }
+
+    /* Right pane: Resource display and search */
+    .right-pane {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      background-color: #ffffff;
+    }
+    .progress-bar {
+      display:flex
+    }
+    .progress-bar progress {
+      width:100%
+    }
+    .search-bar {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .search-bar button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .resource-display {
+      flex: 1;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .bookmark {
+      cursor: pointer;
+      color: blue;
+    }
+  </style>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    </script>  
+  <script>
+const renderer = new marked.Renderer();
+renderer.code = function (code, language) {
+  if (code.match(/^sequenceDiagram/) || code.match(/^graph/)) {
+    return '<pre class="mermaid">' + code + '</pre>';
+  } else {
+    return '<pre><code>' + code + '</code></pre>';
+  }
+};
+  </script>  
+</head>
+<body>
+
+<div class="container">
+  <!-- Left pane: Chat and prompt interface -->
+  <div class="left-pane">
+    <div class="chat-window">
+      <!-- Chat messages will appear here -->
+      <p><strong>Welcome to Navigator!</strong></p>
+    </div>
+
+    <!-- Editor buttons -->
+    <div class="editor-buttons">
+      <button onclick="insertMarkdown('**', '**')">B</button>
+      <button onclick="insertMarkdown('_', '_')">I</button>
+      <button onclick="insertMarkdown('<u>', '</u>')">U</button>
+      <button onclick="insertMarkdown('~~', '~~')">S</button>
+      <button onclick="insertMarkdown('```\n', '\n```')">Code</button>
+      <button onclick="insertMarkdown('* ', '')">*</button>
+      <button onclick="insertMarkdown('1. ', '')">1</button>
+      <!--<button onclick="insertMarkdown('[', '](URL)')">Link</button>
+      <button onclick="insertMarkdown('![description](', ')')">Image</button>-->
+      <button onclick="insertMarkdown('# ', '')">H1</button>
+      <button onclick="insertMarkdown('## ', '')">H2</button>
+      <button onclick="insertMarkdown('### ', '')">H3</button>
+      <button onclick="queue.reprompt()">Reprompt</button>
+      <button onclick="upload()">Upload</button>
+    </div>
+
+    <div class="prompt-upload">
+      <div class="prompt-window">
+        <textarea id="prompt" placeholder="Enter your message or query..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="sendMessage()">Send</button>
+      
+    </div>
+  </div>
+
+  <!-- Vertical drag bar -->
+  <div class="drag-bar" id="drag-bar"></div>
+
+  <!-- Right pane: Search and resource display -->
+  <div class="right-pane">
+    <!--
+    <div class="search-bar">
+      <input type="text" placeholder="Search for resources...">
+      <button>Search</button>
+    </div>
+  -->
+    <div class="progress-bar">
+      <progress id="file" max="100" value="0"></progress>
+    </div>
+    <!--<iframe id="displayPane" class="resource-display" src="http://localhost:3000/page/splash">-->
+      <iframe id="displayPane" class="resource-display" src="http://localhost:8030/page/diagram2.html?id=Platform:DevOps">
+        <!-- Resources such as images, videos, articles, etc. will be displayed here -->
+      <!--<p>Resource results will appear here after searching...</p>-->
+    </iframe>
+  </div>
+</div>
+
+<script>
+  // Markdown insertion
+
+  class DocumentQueue {
+    constructor() {
+      this.queue = [];
+    }
+
+    addDocument(doc) {
+      this.queue.push(doc);
+    }
+
+    getDocument(id) {
+      return this.queue.find(doc =>doc.id === id);
+    }
+    updateFromQueue(id) {
+      let doc = this.getDocument(id)
+      if (!doc) {
+        console.error('Error:', "This document cannot be rendered yet.");
+        alert("This document cannot be rendered yet.");
+        return;
+      }
+      let displayPane = document.getElementById('displayPane')
+      try {
+          let title = doc.title
+          let body = doc.body
+          let id = doc.id
+          displayPane.srcdoc =  `<div id="target" contenteditable="true" style="padding:10pt"><h1>${title}</h1>${marked.parse(body)}</div><button onclick="window.parent.postMessage({action:"updateMessage",data:"${id}"},"*")">Save</button></div>`
+          const promptField = document.getElementById('prompt');
+          promptField.value = doc.prompt
+        } catch (error) {
+            alert(error)
+        }    
+    }
+    reprompt(){
+      let message = this.queue[this.queue.length-1]
+      console.log(JSON.stringify(message,null,4))
+      let prevPrompt = this.queue[this.queue.length-1].prompt
+      const promptField = document.getElementById('prompt');
+      promptField.value = prevPrompt
+    }
+    updateMessage(evt){
+      alert("Updating message")
+    }
+
+  }
+
+
+let queue = new DocumentQueue();
+
+
+  function insertMarkdown(startTag, endTag) {
+    const textarea = document.getElementById('prompt');
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const text = textarea.value;
+    const selectedText = text.substring(start, end);
+    const newText = text.substring(0, start) + startTag + selectedText + endTag + text.substring(end);
+    textarea.value = newText;
+    textarea.focus();
+  }
+
+  // Send message and render markdown to HTML
+  function sendMessage() {
+    const promptBox = document.getElementById('prompt');
+    const chatWindow = document.querySelector('.chat-window');
+    const markdownText = promptBox.value;
+    
+    // Simple Markdown to HTML conversion
+    const htmlText = markdownText
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/_(.*?)_/g, '<em>$1</em>')
+      .replace(/<u>(.*?)<\/u>/g, '<u>$1</u>')
+      .replace(/~~(.*?)~~/g, '<del>$1</del>')
+      .replace(/```(.*?)```/gs, '<pre><code>$1</code></pre>')
+      .replace(/# (.*?)\n/g, '<h1>$1</h1>')
+      .replace(/## (.*?)\n/g, '<h2>$1</h2>')
+      .replace(/### (.*?)\n/g, '<h3>$1</h3>')
+      .replace(/\* (.*?)\n/g, '<ul><li>$1</li></ul>')
+      .replace(/1\. (.*?)\n/g, '<ol><li>$1</li></ol>')
+      .replace(/\!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">')
+      .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+
+    chatWindow.innerHTML +=`<b>User:</b> ${htmlText}`;
+    sendPrompt(promptBox.value)
+    promptBox.value = '';
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
+  // Vertical drag functionality
+  const dragBar = document.getElementById('drag-bar');
+  const leftPane = document.querySelector('.left-pane');
+  const rightPane = document.querySelector('.right-pane');
+  let isResizing = false;
+
+  dragBar.addEventListener('mousedown', (e) => {
+    isResizing = true;
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isResizing) return;
+    const offsetRight = document.body.offsetWidth - (e.clientX - document.body.offsetLeft);
+    leftPane.style.flex = `0 0 ${e.clientX}px`;
+    rightPane.style.flex = `0 0 ${offsetRight}px`;
+  });
+
+  window.addEventListener('mouseup', () => {
+    isResizing = false;
+  });
+
+  async function sendPrompt(prompt) {
+      const promptField = document.getElementById('prompt');
+      const chatbox = document.querySelector('.chat-window');
+      const displayPane = document.getElementById('displayPane');
+      let displayDoc = displayPane.contentDocument;
+      const progressBar = document.querySelector('.progress-bar progress');
+      //progressBar.removeAttribute("value")
+      let progressBarToken = setInterval(()=>{progressBar.value = (progressBar.value <= 100)?parseInt(progressBar.value) + 1:0},200)
+//      progressBar.indeterminate = true
+//      const prompt = promptField.value.trim();
+
+      if (!prompt) {
+        alert('Please enter a message.');
+        return;
+      }
+
+      // Display user's message
+      const userMessage = document.createElement('p');
+      userMessage.className = 'user-message';
+      //userMessage.textContent = 'You: ' + prompt;
+      //chatbox.innerHTML += `<p><strong>User:</strong> ${prompt}</p>`;
+
+      // Clear the prompt field
+      promptField.value = '';
+
+      // Scroll to the bottom
+      chatbox.scrollTop = chatbox.scrollHeight;
+
+      // Send the prompt to the backend server
+      try {
+        const response = await fetch('http://localhost:3000/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        // Display bot's response
+        console.log(JSON.stringify(data,null,4))
+//        console.log(JSON.parse(data))
+        let message = data.completion.choices[0].message
+        let contentNode = message.content.replace("\\\\","\\")
+        let content = JSON.parse(contentNode)
+
+        let title = content.title
+        let body = content.body
+        let role = message.role
+        content.role = role
+        let id = content.id
+        content.prompt = prompt
+
+        console.log(title)
+        //let json = JSON.parse(content.jsonData)
+//        let botMessage = `<div>${body}</div>`;
+        //chatbox.innerHTML += marked.parse(botMessage)
+        displayPane.srcdoc =  `<div id="target" contenteditable="true" style="padding:10pt"><h1>${title}</h1>${marked.parse(body)}</div></div>`
+        chatbox.innerHTML += `<p><strong>${role}:</strong> <span class="bookmark" id="${id}" onclick="queue.updateFromQueue(this.id)">${title}</span></p>`
+        queue.addDocument(content)      
+        // Scroll to the bottom
+        chatbox.scrollTop = chatbox.scrollHeight;
+      //  progressBar.indeterminate = false
+        clearInterval(progressBarToken)
+        progressBar.value = 0
+      } catch (error) {
+        console.error('Error:', error);
+        alert(error);
+      }
+    }
+
+  </script>
+  <script>
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+    });
+  </script>
+</body>
+</html>

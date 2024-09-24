@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/media/coreaa.svg" type="image/x-icon">
+    <title>Markdown Viewer with Mermaid Support</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <script id="markdown">[markdown]</script>
+</head>
+<body>
+    <h1>Coreaa Graph</h1>
+    <div id="content">
+        <!-- The converted Markdown content will be loaded here -->
+    </div>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ startOnLoad: false });
+        console.log(mermaid)
+
+        // Function to load and convert the Markdown file
+        async function loadMarkdownFile() {
+            try {
+ //               const response = await fetch('example.md'); // replace 'example.md' with your markdown file path
+ //               const markdown = await response.text();
+                const markdown= document.querySelector("#markdown").innerHTML
+                // Convert Markdown to HTML
+                const htmlContent = marked.parse(markdown);
+
+                // Inject the HTML into the page
+                console.log(htmlContent);
+                document.getElementById('content').innerHTML = htmlContent;
+
+                // Render Mermaid diagrams
+                mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+            } catch (error) {
+                console.error('Error loading the markdown file:', error);
+            }
+        }
+
+        // Load the Markdown file on page load
+        window.onload = loadMarkdownFile;
+    </script>
+
+</body>
+</html>

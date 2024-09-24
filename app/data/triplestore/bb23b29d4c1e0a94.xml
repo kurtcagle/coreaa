@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sem:triples xmlns:sem="http://marklogic.com/semantics">
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#SprintName</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/DataField#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#ProjectManagement</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#SprintName</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/DataField#dataValue</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Sprint 23</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#WidgetType</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataField#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#WidgetType</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Widget Type</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#WidgetType</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/DataField#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#Reporting</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#WidgetType</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/DataField#dataValue</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Burndown Chart</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#DataSource</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataField#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#DataSource</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Data Source</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#DataSource</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/DataField#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#Reporting</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataField#DataSource</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/DataField#dataValue</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Jira API</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#String</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#String</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">String</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#Text</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#Text</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Text</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#Integer</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#Integer</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Integer</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#Float</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#Float</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Float</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#Date</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#Date</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Date</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#DateTime</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DataFieldType#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/DataFieldType#DateTime</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">DateTime</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Person#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">John Smith</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#description</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Chief Technology Officer at Google</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#firstName</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">John</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#lastName</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Smith</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#email</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">john.smith@google.com</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#phone</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">+1-555-1234</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#address</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Address#JohnSmithHome</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#department</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Department#Engineering</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#division</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Division#SoftwareDevelopment</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#role</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Role#CTO</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JohnSmith</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#manager</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Person#JaneDoe</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Person#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Jane Doe</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#description</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Chief Executive Officer at Microsoft</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#firstName</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Jane</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#lastName</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Doe</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#email</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">jane.doe@microsoft.com</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#phone</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">+1-555-5678</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#phone</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">+1-555-3921</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#address</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Address#JaneDoeHome</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#department</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Department#ExecutiveManagement</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#division</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Division#CorporateManagement</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#JaneDoe</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#role</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Role#CEO</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Person#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Bob Johnson</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#description</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Senior Software Engineer at Amazon</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#firstName</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Bob</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#lastName</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Johnson</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#email</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">bob.johnson@contoso.com</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#phone</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">+1-555-9012</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#address</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Address#BobJohnsonHome</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#department</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Department#ProductDevelopment</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#division</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Division#SoftwareDevelopment</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#role</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Role#SeniorEngineer</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Person#BobJohnson</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Person#manager</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Person#JohnSmith</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Role#CTO</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Role#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Role#CTO</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Chief Technology Officer</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Role#CEO</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Role#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Role#CEO</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Chief Executive Officer</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Role#SeniorEngineer</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Role#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Role#SeniorEngineer</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Senior Software Engineer</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#ContosoHQ</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Address#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#ContosoHQ</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Contoso Headquarters</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#ContosoHQ</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#street</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">123 Main St</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#ContosoHQ</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#city</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Seattle</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#ContosoHQ</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#state</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">WA</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#ContosoHQ</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#zip</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">98101</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#ContosoHQ</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#country</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">USA</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JohnSmithHome</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Address#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JohnSmithHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">456 Oak Ave, Bellevue, WA 98004</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JohnSmithHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#street</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">456 Oak Ave</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JohnSmithHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#city</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Bellevue</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JohnSmithHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#state</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">WA</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JohnSmithHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#zip</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">98004</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JohnSmithHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#country</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">USA</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JaneDoeHome</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Address#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JaneDoeHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">789 Pine St, Redmond WA 98052</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JaneDoeHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#street</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">789 Pine St</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JaneDoeHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#city</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Redmond</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JaneDoeHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#state</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">WA</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JaneDoeHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#zip</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">98052</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#JaneDoeHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#country</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">USA</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#BobJohnsonHome</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Address#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#BobJohnsonHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">321 Elm St, Kirkland, WA 98033</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#BobJohnsonHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#street</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">321 Elm St</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#BobJohnsonHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#city</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Kirkland</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#BobJohnsonHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#state</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">WA</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#BobJohnsonHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#zip</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">98033</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Address#BobJohnsonHome</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Address#country</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">USA</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Department#Engineering</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Department#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Department#Engineering</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Engineering Department</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Department#Engineering</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Department#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DepartmentType#Technical</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Department#Engineering</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Department#division</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Division#SoftwareDevelopment</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Department#ExecutiveManagement</sem:subject>
+    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Department#</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Department#ExecutiveManagement</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Entity#name</sem:predicate>
+    <sem:object datatype="http://www.w3.org/2001/XMLSchema#string">Executive Management Department</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Department#ExecutiveManagement</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Department#type</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/DepartmentType#Management</sem:object>
+  </sem:triple>
+  <sem:triple>
+    <sem:subject>http://ns.coreaa.ai/Department#ExecutiveManagement</sem:subject>
+    <sem:predicate>http://ns.coreaa.ai/Department#division</sem:predicate>
+    <sem:object>http://ns.coreaa.ai/Division#CorporateManagement</sem:object>
+  </sem:triple>
+</sem:triples>

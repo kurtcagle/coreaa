@@ -1,0 +1,341 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix Entity: <http://ns.coraa.ai/Entity#> .
+@prefix Category: <http://ns.coraa.ai/Category#> .
+@prefix Platform: <http://ns.coraa.ai/Platform#> .
+@prefix PlatformType: <http://ns.coraa.ai/PlatformType#> .
+@prefix Org: <http://ns.coraa.ai/Org#> .
+@prefix Company: <http://ns.coraa.ai/Company#> .
+@prefix Vendor: <http://ns.coraa.ai/Vendor#> .
+@prefix VendorType: <http://ns.coraa.ai/VendorType#> .
+@prefix Person: <http://ns.coraa.ai/Person#> .
+@prefix Address: <http://ns.coraa.ai/Address#> .
+@prefix Department: <http://ns.coraa.ai/Department#> .
+@prefix DepartmentType: <http://ns.coraa.ai/DepartmentType#> .
+@prefix Division: <http://ns.coraa.ai/Division#> .
+@prefix Application: <http://ns.coraa.ai/Application#> .
+@prefix ApplicationType: <http://ns.coraa.ai/ApplicationType#> .
+@prefix Module: <http://ns.coraa.ai/Module#> .
+@prefix ModuleType: <http://ns.coraa.ai/ModuleType#> .
+@prefix Component: <http://ns.coraa.ai/Component#> .
+@prefix ComponentType: <http://ns.coraa.ai/ComponentType#> .
+@prefix WorkFlow: <http://ns.coraa.ai/WorkFlow#> .
+@prefix WorkFlowType: <http://ns.coraa.ai/WorkFlowType#> .
+@prefix DataSet: <http://ns.coraa.ai/DataSet#> .
+@prefix DataSetType: <http://ns.coraa.ai/DataSetType#> .
+@prefix DataField: <http://ns.coraa.ai/DataField#> .
+@prefix DataFieldType: <http://ns.coraa.ai/DataFieldType#> .
+
+# Categories
+Category:SoftwareDevelopment a Category: ;
+    Entity:name "Software Development" ;
+    Entity:child Category:WebDevelopment, Category:MobileDevelopment, Category:DesktopDevelopment, Category:CloudComputing, Category:ArtificialIntelligence .
+
+Category:WebDevelopment a Category: ;
+    Entity:name "Web Development" ;
+    Entity:child Category:FrontendDevelopment, Category:BackendDevelopment, Category:FullStackDevelopment .
+
+Category:MobileDevelopment a Category: ;
+    Entity:name "Mobile Development" ;
+    Entity:child Category:iOSDevelopment, Category:AndroidDevelopment, Category:CrossPlatformDevelopment .
+
+Category:DesktopDevelopment a Category: ;
+    Entity:name "Desktop Development" ;
+    Entity:child Category:WindowsDevelopment, Category:MacOSDevelopment, Category:LinuxDevelopment .
+
+Category:CloudComputing a Category: ;
+    Entity:name "Cloud Computing" ;
+    Entity:child Category:IaaS, Category:PaaS, Category:SaaS .
+
+Category:ArtificialIntelligence a Category: ;
+    Entity:name "Artificial Intelligence" ;
+    Entity:child Category:MachineLearning, Category:DeepLearning, Category:NaturalLanguageProcessing .
+
+# Platforms
+Platform:DevOps a Platform: ;
+    Entity:name "DevOps Platform" ;
+    Platform:vendor Vendor:Microsoft ;
+    Platform:type PlatformType:CloudBased ;
+    Platform:application Application:AzureDevOps, Application:GitHubActions, Application:AzurePipelines .
+
+Platform:CloudPlatform a Platform: ;
+    Entity:name "Cloud Platform" ;
+    Platform:vendor Vendor:Amazon ;
+    Platform:type PlatformType:CloudBased ;
+    Platform:application Application:EC2, Application:S3, Application:RDS .
+
+Platform:AIplatform a Platform: ;
+    Entity:name "AI Platform" ;
+    Platform:vendor Vendor:Google ;
+    Platform:type PlatformType:MachineLearning ;
+    Platform:application Application:TensorFlow, Application:CloudML, Application:CloudVision .
+
+# Vendors
+Vendor:Microsoft a Vendor: ;
+    Entity:name "Microsoft" ;
+    Vendor:type VendorType:SoftwareCompany ;
+    Company:revenue 143000000000 .
+
+Vendor:Amazon a Vendor: ;
+    Entity:name "Amazon" ;
+    Vendor:type VendorType:EcommerceAndCloudCompany ;
+    Company:revenue 386000000000 .
+
+Vendor:Google a Vendor: ;
+    Entity:name "Google" ;
+    Vendor:type VendorType:TechnologyCompany ;
+    Company:revenue 257000000000 .
+
+# Applications
+Application:AzureDevOps a Application: ;
+    Entity:name "Azure DevOps" ;
+    Application:type ApplicationType:DevOps ;
+    Application:module Module:Boards, Module:Repos, Module:Pipelines, Module:TestPlans, Module:Artifacts .
+
+Application:GitHubActions a Application: ;
+    Entity:name "GitHub Actions" ;
+    Application:type ApplicationType:ContinuousIntegration ;
+    Application:module Module:Workflows, Module:Actions, Module:Secrets .
+
+Application:AzurePipelines a Application: ;
+    Entity:name "Azure Pipelines" ;
+    Application:type ApplicationType:ContinuousDelivery ;
+    Application:module Module:BuildPipelines, Module:ReleasePipelines, Module:LibraryManagement .
+
+Application:EC2 a Application: ;
+    Entity:name "Amazon EC2" ;
+    Application:type ApplicationType:CloudCompute ;
+    Application:module Module:Instances, Module:AMIs, Module:SecurityGroups .
+
+Application:S3 a Application: ;
+    Entity:name "Amazon S3" ;
+    Application:type ApplicationType:CloudStorage ;
+    Application:module Module:Buckets, Module:Objects, Module:Permissions .
+
+Application:RDS a Application: ;
+    Entity:name "Amazon RDS" ;
+    Application:type ApplicationType:DatabaseService ;
+    Application:module Module:DBInstances, Module:Backups, Module:ParameterGroups .
+
+Application:TensorFlow a Application: ;
+    Entity:name "TensorFlow" ;
+    Application:type ApplicationType:MachineLearning ;
+    Application:module Module:Keras, Module:Estimators, Module:DataValidation .
+
+Application:CloudML a Application: ;
+    Entity:name "Google Cloud ML Engine" ;
+    Application:type ApplicationType:MachineLearningPlatform ;
+    Application:module Module:ModelTraining, Module:ModelServing, Module:JobManagement .
+
+Application:CloudVision a Application: ;
+    Entity:name "Google Cloud Vision" ;
+    Application:type ApplicationType:ComputerVision ;
+    Application:module Module:ImageClassification, Module:ObjectDetection, Module:OCR .
+
+# Modules
+Module:Boards a Module: ;
+    Entity:name "Azure Boards" ;
+    Module:type ModuleType:ProjectManagement ;
+    Module:component Component:Backlog, Component:Sprints, Component:Dashboards ;
+    Module:workflow WorkFlow:AgileWorkflow .
+
+Module:Repos a Module: ;
+    Entity:name "Azure Repos" ;
+    Module:type ModuleType:VersionControl ;
+    Module:component Component:GitRepositories, Component:PullRequests, Component:CodeReview ;
+    Module:workflow WorkFlow:GitWorkflow .
+
+Module:Pipelines a Module: ;
+    Entity:name "Azure Pipelines" ;
+    Module:type ModuleType:ContinuousIntegration ;
+    Module:component Component:BuildDefinitions, Component:ReleaseDefinitions, Component:Environments ;
+    Module:workflow WorkFlow:CICDWorkflow .
+
+Module:TestPlans a Module: ;
+    Entity:name "Azure Test Plans" ;
+    Module:type ModuleType:Testing ;
+    Module:component Component:TestCases, Component:TestSuites, Component:TestExecution ;
+    Module:workflow WorkFlow:TestManagementWorkflow .
+
+Module:Artifacts a Module: ;
+    Entity:name "Azure Artifacts" ;
+    Module:type ModuleType:PackageManagement ;
+    Module:component Component:Feeds, Component:Packages, Component:Upstream ;
+    Module:workflow WorkFlow:PackagePublishingWorkflow .
+
+# Components (for Azure Boards as an example)
+Component:Backlog a Component: ;
+    Entity:name "Backlog" ;
+    Component:type ComponentType:ProjectManagement ;
+    Component:dataSet DataSet:BacklogItems .
+
+Component:Sprints a Component: ;
+    Entity:name "Sprints" ;
+    Component:type ComponentType:ProjectManagement ;
+    Component:dataSet DataSet:SprintItems .
+
+Component:Dashboards a Component: ;
+    Entity:name "Dashboards" ;
+    Component:type ComponentType:Reporting ;
+    Component:dataSet DataSet:DashboardWidgets .
+
+# WorkFlows
+WorkFlow:AgileWorkflow a WorkFlow: ;
+    Entity:name "Agile Workflow" ;
+    WorkFlow:type WorkFlowType:Agile .
+
+WorkFlow:GitWorkflow a WorkFlow: ;
+    Entity:name "Git Workflow" ;
+    WorkFlow:type WorkFlowType:VersionControl .
+
+WorkFlow:CICDWorkflow a WorkFlow: ;
+    Entity:name "CI/CD Workflow" ;
+    WorkFlow:type WorkFlowType:ContinuousDelivery .
+
+# DataSets
+DataSet:BacklogItems a DataSet: ;
+    Entity:name "Backlog Items" ;
+    DataSet:type DataSetType:ProjectManagement ;
+    DataSet:field DataField:Title, DataField:Description, DataField:Priority, DataField:Effort, DataField:Status .
+
+DataSet:SprintItems a DataSet: ;
+    Entity:name "Sprint Items" ;
+    DataSet:type DataSetType:ProjectManagement ;
+    DataSet:field DataField:Title, DataField:RemainingWork, DataField:AssignedTo, DataField:SprintName .
+
+DataSet:DashboardWidgets a DataSet: ;
+    Entity:name "Dashboard Widgets" ;
+    DataSet:type DataSetType:Reporting ;
+    DataSet:field DataField:WidgetType, DataField:DataSource, DataField:Refresh .
+
+# DataFields (for BacklogItems as an example)
+DataField:Title a DataField: ;
+    Entity:name "Title" ;
+    DataField:type DataFieldType:String ;
+    DataField:dataValue "Implement User Authentication" .
+
+DataField:Description a DataField: ;
+    Entity:name "Description" ;
+    DataField:type DataFieldType:Text ;
+    DataField:dataValue "Implement a secure user authentication system using OAuth 2.0" .
+
+DataField:Priority a DataField: ;
+    Entity:name "Priority" ;
+    DataField:type DataFieldType:Integer ;
+    DataField:dataValue "1" .
+
+DataField:Effort a DataField: ;
+    Entity:name "Effort" ;
+    DataField:type DataFieldType:Float ;
+    DataField:dataValue "13.5" .
+
+DataField:Status a DataField: ;
+    Entity:name "Status" ;
+    DataField:type DataFieldType:String ;
+    DataField:dataValue "In Progress" .
+
+# Organization
+Org:Contoso a Company: ;
+    Entity:name "Contoso Corporation" ;
+    Org:executive Person:JohnDoe ;
+    Org:address Address:ContosoHQ ;
+    Org:headCount 5000 ;
+    Company:revenue 1000000000 ;
+    Org:vendor Vendor:Microsoft, Vendor:Amazon, Vendor:Google ;
+    Org:application Application:AzureDevOps, Application:GitHubActions, Application:AzurePipelines, Application:EC2, Application:S3, Application:TensorFlow .
+
+# Persons
+Person:JohnDoe a Person: ;
+    Entity:name "John Doe" ;
+    Person:firstName "John" ;
+    Person:lastName "Doe" ;
+    Person:email "john.doe@contoso.com" ;
+    Person:phone "+1-555-1234" ;
+    Person:address Address:JohnDoeHome ;
+    Person:department Department:Engineering ;
+    Person:division Division:SoftwareDevelopment ;
+    Person:role "Chief Technology Officer" ;
+    Person:manager Person:JaneSmith .
+
+Person:JaneSmith a Person: ;
+    Entity:name "Jane Smith" ;
+    Person:firstName "Jane" ;
+    Person:lastName "Smith" ;
+    Person:email "jane.smith@contoso.com" ;
+    Person:phone "+1-555-5678" ;
+    Person:address Address:JaneSmithHome ;
+    Person:department Department:ExecutiveManagement ;
+    Person:division Division:CorporateManagement ;
+    Person:role "Chief Executive Officer" .
+
+Person:BobJohnson a Person: ;
+    Entity:name "Bob Johnson" ;
+    Person:firstName "Bob" ;
+    Person:lastName "Johnson" ;
+    Person:email "bob.johnson@contoso.com" ;
+    Person:phone "+1-555-9012" ;
+    Person:address Address:BobJohnsonHome ;
+    Person:department Department:ProductDevelopment ;
+    Person:division Division:SoftwareDevelopment ;
+    Person:role "Senior Software Engineer" ;
+    Person:manager Person:JohnDoe .
+
+# Addresses
+Address:ContosoHQ a Address: ;
+    Entity:name "Contoso Headquarters" ;
+    Address:street "123 Main St" ;
+    Address:city "Seattle" ;
+    Address:state "WA" ;
+    Address:zip "98101" ;
+    Address:country "USA" .
+
+Address:JohnDoeHome a Address: ;
+    Entity:name "John Doe's Home" ;
+    Address:street "456 Oak Ave" ;
+    Address:city "Bellevue" ;
+    Address:state "WA" ;
+    Address:zip "98004" ;
+    Address:country "USA" .
+
+Address:JaneSmithHome a Address: ;
+    Entity:name "Jane Smith's Home" ;
+    Address:street "789 Pine St" ;
+    Address:city "Redmond" ;
+    Address:state "WA" ;
+    Address:zip "98052" ;
+    Address:country "USA" .
+
+Address:BobJohnsonHome a Address: ;
+    Entity:name "Bob Johnson's Home" ;
+    Address:street "321 Elm St" ;
+    Address:city "Kirkland" ;
+    Address:state "WA" ;
+    Address:zip "98033" ;
+    Address:country "USA" .
+
+# Departments
+Department:Engineering a Department: ;
+    Entity:name "Engineering Department" ;
+    Department:type DepartmentType:Technical ;
+    Department:division Division:SoftwareDevelopment .
+
+Department:ExecutiveManagement a Department: ;
+    Entity:name "Executive Management Department" ;
+    Department:type DepartmentType:Management ;
+    Department:division Division:CorporateManagement .
+
+Department:ProductDevelopment a Department: ;
+    Entity:name "Product Development Department" ;
+    Department:type DepartmentType:Technical ;
+    Department:division Division:SoftwareDevelopment .
+
+# Divisions
+Division:SoftwareDevelopment a Division: ;
+    Entity:name "Software Development Division" .
+
+Division:CorporateManagement a Division: ;
+    Entity:name "Corporate Management Division" .
+
+Division:CloudServices a Division: ;
+    Entity:name "Cloud Services Division" .
